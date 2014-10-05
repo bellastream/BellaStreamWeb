@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}The title{% endblock %}
+{% block header %}Recent Posts{% endblock %}
+{% block content %}
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+				{% for post in posts %}
+                <!-- First Blog Post -->
+                <h2>
+                    <a href="/details">{{ post.title }}</a>
+                </h2>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.timestamp }}</p>
+                <hr>
+                <!-- img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
+                <p>{{ post.body }}</p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                <hr>
+				{% endfor %}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+
+{% endblock %}
