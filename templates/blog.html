@@ -4,19 +4,21 @@
 {% block content %}
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-				{% for post in posts %}
+		{% for post in posts %}
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="/details">{{ post.title }}</a>
+                    <a href="{{ post.id }}/">{{ post.title }}</a>
                 </h2>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.timestamp }}</p>
                 <hr>
                 <!-- img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
-                <p>{{ post.body }}</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+                {% autoescape off %}
+		{{ post.body | truncatechars:"350" }}
+		{% endautoescape %}
+		<p></p>
+                <a class="btn btn-primary" href="{{ post.id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <hr>
-				{% endfor %}
+		{% endfor %}
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="previous">
