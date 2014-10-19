@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}The title{% endblock %}
+{% block title %}Bella's Blog{% endblock %}
 {% block header %}Recent Posts{% endblock %}
 {% block content %}
             <!-- Blog Entries Column -->
@@ -12,7 +12,7 @@
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.timestamp }}</p>
                 <hr>
                 <!-- img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
-                {% autoescape off %}
+        {% autoescape off %}
 		{{ post.body | truncatechars:"350" }}
 		{% endautoescape %}
 		<p></p>
