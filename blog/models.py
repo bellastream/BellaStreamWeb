@@ -9,7 +9,7 @@ class BlogPost(models.Model):
 	timestamp = models.DateTimeField()
 	
 	def __unicode__(self):
-		return self.id
+		return self.title
 	class Meta:
 		ordering = ['-timestamp']
 	
@@ -20,11 +20,11 @@ class BlogComment(models.Model):
 	email = models.EmailField()
 	body = models.TextField()
 	timestamp = models.DateTimeField()
+	def __unicode__(self):
+		return self.post.title + '-' + self.author 
 	class Meta:
 		ordering = ['timestamp']
 
 class BlogPostAdmin(admin.ModelAdmin):
 	list_display = ('title', 'timestamp')
-
-admin.site.register(BlogPost,BlogPostAdmin)
 

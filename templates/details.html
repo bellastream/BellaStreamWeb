@@ -43,9 +43,9 @@
                 	<form role="form" action="?" method="POST">
                 		{% csrf_token %}        
                     	<div class="form-group">
-                    			{{ form.name.label_tag }}:{{ form.name }} 
-         						{{ form.email.label_tag }}:{{ form.email }}
-                        		{{ form.message }}
+                    			<p>{{ form.name.label_tag }} {{ form.name }}</p>
+         						<p>{{ form.email.label_tag }} {{ form.email }}</p>
+                        		<p>{{ form.message }}</p>
                     	</div>
                     	<button type="submit" class="btn btn-primary">Submit</button>
                 	</form>
