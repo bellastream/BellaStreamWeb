@@ -25,6 +25,4 @@ class BlogComment(models.Model):
 	class Meta:
 		ordering = ['timestamp']
 
-class BlogPostAdmin(admin.ModelAdmin):
-	list_display = ('title', 'timestamp')
 

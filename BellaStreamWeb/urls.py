@@ -1,6 +1,11 @@
 from django.conf.urls import include, url
-from django.contrib import admin
 from django.conf import settings
+#from django.contrib import admin
+import xadmin
+xadmin.autodiscover()
+#from xadmin.plugins import xversion
+#xversion.registe_models()
+
 
 urlpatterns = [
     # Examples:
@@ -8,11 +13,11 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'BellaStreamWeb.views.home'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(xadmin.site.urls), name='xadmin'),
     url(r'^blog/', include('blog.urls')),
 ]
 
 if settings.DEBUG is False:
 	urlpatterns += [
-		url(r'^templates/(.*)$', 'django.views.static.serve', {'document_root': settings.TEMPLATE_ROOT}),
+		url(r'^statics/(.*)$', 'django.views.static.serve', {'document_root': settings.TEMPLATE_ROOT}),
 ]

@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'qv8h)=i44-p50=o(e9eh%zv1=5+70n8#-13n7+zsgmt)9*46bs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -36,6 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+	'xadmin',
+	'crispy_forms',
+#	'reversion',
+
     'blog'
 )
 
@@ -44,10 +49,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+#    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'django.middleware.security.SecurityMiddleware',
+#    'django.middleware.security.SecurityMiddleware',
 )
 
 ROOT_URLCONF = 'BellaStreamWeb.urls'
@@ -74,7 +79,7 @@ DEFAULT_CHARSET = 'utf-8'
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -85,17 +90,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-PROJECT_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 
-TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates')
+TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'statics')
 
-STATIC_URL = '/templates/'
+STATIC_URL = '/statics/'
 
 STATICFILES_DIRS = (
 	("css", os.path.join(TEMPLATE_ROOT, 'css')),
 	("js", os.path.join(TEMPLATE_ROOT, 'js')),
 	("images", os.path.join(TEMPLATE_ROOT, 'img')),
 	("fonts", os.path.join(TEMPLATE_ROOT, 'fonts')),
+	("pictures", os.path.join(TEMPLATE_ROOT, 'pictures')),
 )
 
 #template
