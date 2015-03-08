@@ -2,9 +2,9 @@
 {% block title %}Bella's Blog{% endblock %}
 {% block header %}Recent Posts{% endblock %}
 {% block content %}
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-		{% for post in posts %}
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            {% for post in posts.object_list %}
                 <!-- First Blog Post -->
                 <h2>
                     <a href="{{ post.id }}/">{{ post.title }}</a>
@@ -12,23 +12,27 @@
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.timestamp }}</p>
                 <hr>
                 <!-- img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
-        {% autoescape off %}
-		{{ post.body | truncatechars:"350" }}
-		{% endautoescape %}
-		<p></p>
+                    {% autoescape off %}
+                    {{ post.body | truncatechars:"350" }}
+                    {% endautoescape %}
+                    <p></p>
                 <a class="btn btn-primary" href="{{ post.id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <hr>
-		{% endfor %}
+            {% endfor %}
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="previous">
-                        <a href="#">&larr; Older</a>
+                        {% if posts.has_previous %}
+                            <a href="?page={{ posts.previous_page_number }}">上一页</a>
+                        {% endif %}
                     </li>
+                    
                     <li class="next">
-                        <a href="#">Newer &rarr;</a>
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}">下一页</a>
+                        {% endif %}
                     </li>
                 </ul>
 
             </div>
-
 {% endblock %}

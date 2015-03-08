@@ -3,6 +3,7 @@ from django.template import loader, Context,RequestContext
 from django.http import HttpResponse
 from django.http import Http404
 from django import forms
+from django.core.paginator import Paginator
 from blog.models import BlogPost
 from blog.models import BlogComment
 from blog.forms import CommentForm
@@ -13,9 +14,15 @@ import time
 # Create your views here.
 
 def archivePage(request):
-	posts = BlogPost.objects.all()
+	posts_list = BlogPost.objects.all()
+	pages = Paginator(posts_list, 5)
+	page = int(request.GET.get('page', '1'))
+	try:
+		page_list = pages.page(page)
+	except (EmptyPage, InvalidPage):
+		page_list = pages.page(paginator.num_pages)
 	t = loader.get_template("blog.html")
-	c = Context({'posts':posts})
+	c = Context({'posts':page_list})
 	return HttpResponse(t.render(c))
 
 def detailPage(request, id = ''):
@@ -27,8 +34,7 @@ def detailPage(request, id = ''):
 		form = CommentForm(request.POST)
 		if form.is_valid():	  
 			addComment(post,form, id)
-	else:
-		form = CommentForm()
+	form = CommentForm()
 	comments = post.blogcomment_set.all()
 	t = loader.get_template("details.html")
 	c = RequestContext(request,{'post':post})
