@@ -1,0 +1,9 @@
+<uwsgi>
+    <socket>127.0.0.1:8301</socket>
+    <master>true</master>
+    <chdir>/mnt/BellaStreamWeb/</chdir>
+    <pythonpath>/mnt/BellaStreamWeb/</pythonpath>
+    <module>BellaStreamWeb.wsgi</module>
+    <processes>3</processes>
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>
