@@ -1,3 +1,7 @@
 *.pyc
-*.sqlite3
+db.sqlite3
 scripts/
+migrations/
+media/
+.idea/
+
