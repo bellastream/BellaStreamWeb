@@ -5,3 +5,4 @@ migrations/
 media/
 .idea/
 *.log
+uwsgi.xml

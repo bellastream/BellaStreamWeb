@@ -2,13 +2,18 @@
 from django.db import models
 
 
-POST_TYPE = ['', '', '']
+POST_TYPE = (
+    ('DIARY', '碎碎念念'),
+    ('TRAVEL', '游游走走'),
+    ('CODING', '码码农农'),
+	('OTHER', '你猜猜'),
+)
 
 
 class BlogPost(models.Model):
 	title = models.CharField(max_length=150)
 	content = models.TextField(default="", verbose_name="内容")
-	type = models.ForeignKey(BlogType)
+	type = models.CharField(max_length=10, choices=POST_TYPE, verbose_name="类别")
 	create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 	last_modified = models.DateTimeField(auto_now=True, verbose_name="最后修改时间")
 
@@ -31,7 +36,3 @@ class BlogComment(models.Model):
 
 	class Meta:
 		ordering = ['create_time']
-
-
-class BlogType(models.Model):
-	name = models.CharField(max_length=50, default="", verbose_name="名字")
