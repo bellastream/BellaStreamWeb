@@ -12,7 +12,7 @@
 				</p>
             	<hr>
             	<!-- Date/Time -->
-            	<p><span class="glyphicon glyphicon-time"></span>{{ post.timestamp }}</p>
+            	<p><span class="glyphicon glyphicon-time"></span>{{ post.create_time }}</p>
             	<hr>
             	<!-- Preview Image
             	<img class="img-responsive" src="http://placehold.it/900x300" alt="">
@@ -20,7 +20,7 @@
 				<hr>
             	<!-- Post Content -->
 		{% autoescape off %}
-		{{ post.body }}
+		{{ post.content }}
 		{% endautoescape %}
             	<hr>
             <!-- Blog Comments -->
