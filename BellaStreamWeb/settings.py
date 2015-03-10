@@ -66,8 +66,8 @@ DATABASES = {
     'default': { # mysql
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'stream_web',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'streamer',
+        'PASSWORD': 'stream',
         'HOST': '',
         'PORT': '',
     }
