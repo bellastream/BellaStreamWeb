@@ -12,16 +12,16 @@
 				</p>
             	<hr>
             	<!-- Date/Time -->
-            	<p><span class="glyphicon glyphicon-time"></span>{{ post.timestamp }}</p>
+            	<p><span class="glyphicon glyphicon-time"></span>{{ post.create_time }}</p>
             	<hr>
             	<!-- Preview Image
             	<img class="img-responsive" src="http://placehold.it/900x300" alt="">
             	-->
 				<hr>
             	<!-- Post Content -->
-		{% autoescape off %}
-		{{ post.body }}
-		{% endautoescape %}
+				{% autoescape off %}
+				{{ post.content }}
+				{% endautoescape %}
             	<hr>
             <!-- Blog Comments -->
 			<!-- Posted Comments -->
@@ -41,15 +41,15 @@
             	<div class="well">
                 	<h4>Leave a Comment:</h4>
                 	<form role="form" action="?" method="POST">
-                		{% csrf_token %}        
+                		{% csrf_token %}
                     	<div class="form-group">
                     			<p>{{ form.name.label_tag }} {{ form.name }}</p>
          						<p>{{ form.email.label_tag }} {{ form.email }}</p>
-                        		<p>{{ form.message }}</p>
+                        		<p>{{ form.content }}</p>
                     	</div>
                     	<button type="submit" class="btn btn-primary">Submit</button>
                 	</form>
-              </div>
+              	</div>
         </div>
 
 {% endblock %}
