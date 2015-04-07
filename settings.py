@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'qv8h)=i44-p50=o(e9eh%zv1=5+70n8#-13n7+zsgmt)9*46bs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'reversion',
     'blog',
+    'stream',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,9 +54,9 @@ MIDDLEWARE_CLASSES = (
 #    'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'BellaStreamWeb.urls'
+ROOT_URLCONF = 'urls'
 
-WSGI_APPLICATION = 'BellaStreamWeb.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 PHP_CGI = '/usr/local/bin/php-cgi'
 
@@ -96,13 +97,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '')
 
 LOGS_BASE_DIR = os.path.join(PROJECT_ROOT, "log")
 
-TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'statics')
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, 'templates/')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'statics/')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
 STATIC_URL = '/statics/'
 MEDIA_URL = '/media/'
