@@ -10,10 +10,8 @@ xversion.register_models()
 urlpatterns = [
     # Examples:
     #url(r'^$', 'BellaStreamWeb.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'BellaStreamWeb.views.home'),
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'views.home'),
     url(r'^xadmin/', include(xadmin.site.urls)),
     url(r'^blog/', include('blog.urls')),
 ]

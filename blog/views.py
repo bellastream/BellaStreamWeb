@@ -13,7 +13,7 @@ import re
 
 def archivePage(request):
 	type = request.GET.get('type', '')
-	if type in POST_TYPE:
+	if type:
 		posts_list = BlogPost.objects.filter(type=type)
 	else:
 		posts_list = BlogPost.objects.all()
@@ -47,5 +47,4 @@ def detailPage(request, id=''):
 	c['comments'] = comments
 	c['form'] = form
 	return HttpResponse(t.render(c))
-
 

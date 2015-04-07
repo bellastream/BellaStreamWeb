@@ -1,8 +1,9 @@
 # coding:utf-8
 import xadmin
 from django import forms
+
 from blog.models import BlogPost, BlogComment
-from BellaStreamWeb import settings
+import settings
 
 
 class TinymceWidget(forms.Textarea):
