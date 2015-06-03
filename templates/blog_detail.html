@@ -19,7 +19,9 @@
             	-->
 				<hr>
             	<!-- Post Content -->
-
+				{% if post.image %}
+					<img src="post.image">
+				{% endif %}
 				{% autoescape off %}
 				{{ post.content }}
 				{% endautoescape %}

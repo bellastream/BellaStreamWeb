@@ -3,10 +3,10 @@ from django.db import models
 
 
 POST_TYPE = (
-    ('DIARY', '碎碎念念'),
-    ('TRAVEL', '游游走走'),
-    ('CODING', '码码农农'),
-	('OTHER', '你猜猜'),
+    ('DIARY', '记忆.'),
+    ('TRAVEL', '时光.'),
+    ('IMAGE', '碎片'),
+	('OTHER', '弦.'),
 )
 
 BLOG_UPLOAD_ROOT = "pictures"

@@ -12,7 +12,9 @@
                 </h2>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.create_time }}</p>
                 <hr>
-                <!-- img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
+                    {% if post.image %}
+					<img src="post.image">
+				    {% endif %}
                     {% autoescape off %}
                     {{ post.content | truncatechars_html:350 | safe }}
                     {% endautoescape %}

@@ -25,7 +25,7 @@ class BlogPostForm(forms.ModelForm):
 
 
 class BlogPostAdmin(object):
-    list_display = ['title', 'type', 'last_modified']
+    list_display = ['title', 'type', 'last_modified', 'create_time']
     form = BlogPostForm
 
 
