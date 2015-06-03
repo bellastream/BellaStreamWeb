@@ -9,9 +9,11 @@ POST_TYPE = (
 	('OTHER', '你猜猜'),
 )
 
+BLOG_UPLOAD_ROOT = "pictures"
 
 class BlogPost(models.Model):
 	title = models.CharField(max_length=150)
+	image = models.ImageField(upload_to=BLOG_UPLOAD_ROOT, null=True, verbose_name="配图")
 	content = models.TextField(default="", verbose_name="内容")
 	type = models.CharField(max_length=10, choices=POST_TYPE, verbose_name="类别")
 	create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")

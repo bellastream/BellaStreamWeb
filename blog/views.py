@@ -2,16 +2,12 @@
 from django.template import loader, Context, RequestContext
 from django.http import HttpResponse
 from django.http import Http404
-from django import forms
 from django.core.paginator import Paginator
 from blog.models import BlogPost, BlogComment, POST_TYPE
 from blog.forms import CommentForm
-from django.views.decorators.csrf import csrf_exempt
-import re
 
-# Create your views here.
 
-def archivePage(request):
+def blog_archive_view(request):
 	type = request.GET.get('type', '')
 	if type:
 		posts_list = BlogPost.objects.filter(type=type)
@@ -25,12 +21,14 @@ def archivePage(request):
 	except (EmptyPage, InvalidPage):
 		page_list = pages.page(paginator.num_pages)
 
-	t = loader.get_template("blog.html")
-	c = Context({'posts': page_list})
+	t = loader.get_template("blog_archive.html")
+	c = Context(
+		{'posts': page_list}
+	)
 	return HttpResponse(t.render(c))
 
 
-def detailPage(request, id=''):
+def blog_detail_view(request, id=''):
 	try:
 		post = BlogPost.objects.get(id=int(id))
 	except BlogPost.DoesNotExist:
@@ -42,7 +40,7 @@ def detailPage(request, id=''):
 
 	form = CommentForm()
 	comments = post.blogcomment_set.all()
-	t = loader.get_template("details.html")
+	t = loader.get_template("blog_detail.html")
 	c = RequestContext(request, {'post': post})
 	c['comments'] = comments
 	c['form'] = form
