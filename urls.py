@@ -11,9 +11,11 @@ urlpatterns = [
     # Examples:
     #url(r'^$', 'BellaStreamWeb.views.home', name='home'),
 
-    url(r'^$', 'views.home'),
+    url(r'^$', 'views.home_view'),
     url(r'^xadmin/', include(xadmin.site.urls)),
     url(r'^blog/', include('blog.urls')),
+    url(r'^music/', 'views.music_view'),
+    url(r'^about/', 'views.about_view'),
 ]
 
 

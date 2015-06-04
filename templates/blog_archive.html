@@ -1,42 +1,61 @@
 {% extends "base.html" %}
 {% block title %}Bella's Blog{% endblock %}
-{% block header %}Recent Posts{% endblock %}
 {% block content %}
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-            {% for post in posts.object_list %}
-            <div>
-                <!-- First Blog Post -->
-                <h2>
-                    <a href="{{ post.id }}/">{{ post.title }}</a>
-                </h2>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ post.create_time }}</p>
-                <hr>
+<div class="g-postlist">
+    {% for post in posts.object_list %}
+    <div class="m-post m-post-photo">
+        <div class="posthead"></div>
+        <div class="postbody">
+            <div class="otherinfo">
+                <a href="{{ post.id }}/" class="post-title" hidefocus="true">{{ post.title }}</a>
+                <span class="time" hidefocus="true">{{ post.create_time }}</span>
+            </div>
+            <div class="f-clear content">
+                <div class="wrap">
                     {% if post.image %}
-					<img src="post.image">
-				    {% endif %}
+                    <div class="img">
+                        <a href="/media/{{ post.image }}">
+                            <img src="post.image">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="text">
                     {% autoescape off %}
                     {{ post.content | truncatechars_html:350 | safe }}
                     {% endautoescape %}
-                    <p></p>
-                <a class="btn btn-primary" href="{{ post.id }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <hr>
+                </div>
             </div>
-            {% endfor %}
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="previous">
-                    {% if posts.has_previous %}
-                        <a href="?page={{ posts.previous_page_number }}">上一页</a>
-                    {% endif %}
-                </li>
-
-                <li class="next">
-                    {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}">下一页</a>
-                    {% endif %}
-                </li>
-            </ul>
-
+            
         </div>
+        <div class="postfoot"></div>
+    </div>
+    {% endfor %}
+    <div class="m-pager">
+        {% if posts.has_previous %}
+        <div class="page prev">
+            <a href="?page={{ posts.previous_page_number }}" class="f-icon">&nbsp;</a>
+        </div>
+        {% else %}
+        <div class="page prev">
+            <a href="#" onclick="return false;" class="f-icon js-disable">&nbsp;</a>
+        </div>
+        {% endif %}
+        {% if posts.has_next %}
+        <div class="page next">
+            <a href="?page={{ posts.next_page_number }}" class="f-icon" >&nbsp;</a>
+        </div>
+        {% else %}
+        <div class="page next">
+            <a href="#" onclick="return false;" class="f-icon js-disable" >&nbsp;</a>
+        </div>
+        {% endif %}
+        <div class="pagenum">
+            <a class="curnum" hidefocus="true" href="#"></a>
+            <span class="sep">|</span>
+            <span class="totalnum"></span>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
