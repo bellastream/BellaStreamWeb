@@ -108,7 +108,7 @@
   padding-bottom: 1px;
   background: url("/statics/img/post_body.png") 0 0 repeat-y;
 }
-.postbody .img {
+.postbody .img, .postbody img {
   max-width: 100%;
   _width: 100%;
 }
