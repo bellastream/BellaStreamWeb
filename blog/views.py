@@ -5,7 +5,7 @@ from django.http import Http404
 from django.core.paginator import Paginator
 from blog.models import BlogPost, BlogComment, POST_TYPE
 from blog.forms import CommentForm
-
+from blog import get_user_from_request
 
 def blog_archive_view(request):
 	type = request.GET.get('type', '')
@@ -36,7 +36,7 @@ def blog_detail_view(request, id=''):
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 		if form.is_valid():
-			is_owner = True if get_user_from_request(request) else None
+			is_owner = True if get_user_from_request(request) else False
 			form.save_comment(post, is_owner)
 
 	form = CommentForm()

@@ -37,7 +37,7 @@
             {% for comt in comments %}
             <p reblogfrom="reblogfrom">
                 {% if comt.is_owner %}
-                    <a href ='#'>{{ comt.author }}</a>
+                    <a href ='/'>{{ comt.author }}</a>
                 {% else %}
                     <p>{{ comt.author }}</p>
                 {% endif %}
