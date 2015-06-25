@@ -36,7 +36,8 @@ def blog_detail_view(request, id=''):
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 		if form.is_valid():
-			form.save_comment(post)
+			is_author = get_user_from_request(request)
+			form.save_comment(post, is_author)
 
 	form = CommentForm()
 	comments = post.blogcomment_set.all()

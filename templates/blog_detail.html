@@ -36,7 +36,11 @@
         <div class="postcomment">
             {% for comt in comments %}
             <p reblogfrom="reblogfrom">
-                <p>{{ comt.author }}</p>
+                {% if comt.is_owner %}
+                    <a href ='#'>{{ comt.author }}</a>
+                {% else %}
+                    <p>{{ comt.author }}</p>
+                {% endif %}
                 <p>{{ comt.create_time }}</p>
             </p>
             <blockquote>
