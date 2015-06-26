@@ -3,15 +3,17 @@ from django.db import models
 
 
 POST_TYPE = (
-    ('DIARY', '碎碎念念'),
-    ('TRAVEL', '游游走走'),
-    ('CODING', '码码农农'),
-	('OTHER', '你猜猜'),
+    ('DIARY', '记忆.'),
+    ('TRAVEL', '时光.'),
+    ('IMAGE', '碎片'),
+	('OTHER', '弦.'),
 )
 
+BLOG_UPLOAD_ROOT = "pictures"
 
 class BlogPost(models.Model):
 	title = models.CharField(max_length=150)
+	image = models.ImageField(upload_to=BLOG_UPLOAD_ROOT, null=True, blank=True, verbose_name="配图")
 	content = models.TextField(default="", verbose_name="内容")
 	type = models.CharField(max_length=10, choices=POST_TYPE, verbose_name="类别")
 	create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
@@ -29,6 +31,7 @@ class BlogComment(models.Model):
 	author = models.CharField(max_length=30, default="", verbose_name="名字")
 	email = models.EmailField()
 	content = models.TextField(default="", verbose_name="内容")
+	is_owner = models.BooleanField(default=False, verbose_name="是否文章作者")
 	create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
 	def __unicode__(self):
