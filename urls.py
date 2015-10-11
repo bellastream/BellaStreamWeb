@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^music/', 'views.music_view'),
     url(r'^about/', 'views.about_view'),
+    url(r'^wechat/', include('wechat.urls')),
 ]
 
 
