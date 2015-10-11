@@ -52,6 +52,13 @@
         margin: 0 8px;
     }
 
+    .navigation a:hover {
+      background: #d4dff0;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
 
     .header {
         min-width: 720px;
@@ -64,6 +71,10 @@
         zoom: 1;
     }
     
+    .f-right {
+      float:right;
+      margin-right: 25px;
+    }
     .navbottom {
         width: 100%;
         height: 45px;
@@ -82,6 +93,17 @@
   zoom: 1;
   margin-bottom: 30px;
 }
+.index-wrap .text {
+   text-align: center; 
+   margin:auto;
+   padding-top:20%;
+}
+
+.about-wrap .text {
+   text-align: center; 
+   margin:auto;
+   padding-top:10%;
+}
 
 .posthead {
   background: url("/statics/img/post_head.png") 0 0 no-repeat;
@@ -92,6 +114,48 @@
   width: 100%;
   padding-bottom: 1px;
   background: url("/statics/img/post_body.png") 0 0 repeat-y;
+}
+.postbody .img, .postbody img {
+  max-width: 100%;
+  _width: 100%;
+}
+
+.postbody .postcomment {
+  padding: 30px 60px 0 60px;
+}
+
+.postbody .comment .form-group {
+  line-height: 30px;
+}
+
+.postbody .comment .nctitle {
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.postbody .comment .inputtext {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.postbody .comment textarea {
+  width: 100%;
+  margin: auto;
+  resize: none;
+
+  border: 2px #CCC solid;
+}
+
+.postbody .btn-submit {
+  float: right;
+  width: 78px;
+  height: 24px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  color: #fff;
+  background: #777;
+  border-color: #777;
 }
 
 .postfoot {
@@ -122,16 +186,41 @@
   width: 600px;
 }
 
+.m-post .otherinfo .post-title, .m-detail .otherinfo .post-title {
+    display:block;
+    color: #09c;
+    font-size: 15px;
+}
+
+
+.m-detail {
+  position: relative;
+  z-index: 5;
+  zoom: 1;
+  margin-bottom: 30px;
+}
+.m-detail .wrap {
+  margin-bottom: 15px;
+}
+
+.m-detail .content {
+  padding: 30px 60px 0 60px;
+}
+.m-detail .img img {
+  max-width: 100%;
+  _width: 100%;
+}
+
+.m-detail-comment .comment {
+  padding: 30px 60px 30px 60px;
+  color: #888;
+}
+
 .otherinfo {
     height: 22px;
     line-height: 25px;
     margin: 0 auto;
     text-align: center;
-}
-.m-post .otherinfo .post-title {
-    display:block;
-    color: #09c;
-    font-size: 15px;
 }
 
 
@@ -141,6 +230,7 @@
 }
 .video-wrap .m-vidio {
     width: 359px;
+    padding: 30px 60px 30px 60px;
     margin: 0 auto;
 }
 

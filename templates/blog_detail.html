@@ -1,59 +1,74 @@
-{% extends "base.html" %}
-{% block title %}{% endblock %}  
+{% extends "base.html" %} 
+{% block title %}{% endblock %} 
 {% block content %}
-        <!-- Blog Post Content Column -->
-       	<div class="col-lg-8">
-              <!-- Blog Post -->
-                <!-- Title -->
-    	        <h1>{{ post.title }}</h1>
-            	<!-- Author -->
-            	<p class="lead">
-                	by <a href="/">BellaStream</a>
-				</p>
-            	<hr>
-            	<!-- Date/Time -->
-            	<p><span class="glyphicon glyphicon-time"></span>{{ post.create_time }}</p>
-            	<hr>
-            	<!-- Preview Image
-            	<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            	-->
-				<hr>
-            	<!-- Post Content -->
-				{% if post.image %}
-					<img src="post.image">
-				{% endif %}
-				{% autoescape off %}
-				{{ post.content }}
-				{% endautoescape %}
-
-            	<hr>
-            <!-- Blog Comments -->
-			<!-- Posted Comments -->
-            <!-- Comment -->
-            {% for comt in comments %}
-            <div class="media">
-                <div class="media-body">
-                    <h4 class="media-heading">{{ comt.author }}
-                        <small>{{ comt.create_time }}</small>
-                    </h4>
-                    {{ comt.content }}
+<div class="g-postlist">
+    <div class="m-detail m-detail-photo">
+        <div class="posthead"></div>
+        <div class="postbody">
+            <div class="otherinfo">
+                <a href="/blog/{{ post.id }}/" class="post-title" hidefocus="true">{{ post.title }}</a>
+                <span class="time" hidefocus="true">{{ post.create_time }}</span>
+            </div>
+            <div class="f-clear content">
+                <div class="wrap">
+                    {% if post.image %}
+                    <div class="img">
+                        <a href="/media/{{ post.image }}">
+                            <img src="/media/{{ post.image }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="text">
+                    {% autoescape off %}
+                    {{ post.content }}
+                    {% endautoescape %}
                 </div>
             </div>
-        	{% endfor %}
-        	<hr>
-            	<!-- Comments Form -->
-            	<div class="well">
-                	<h4>Leave a Comment:</h4>
-                	<form role="form" action="?" method="POST">
-                		{% csrf_token %}
-                    	<div class="form-group">
-                    			<p>{{ form.name.label_tag }} {{ form.name }}</p>
-         						<p>{{ form.email.label_tag }} {{ form.email }}</p>
-                        		<p>{{ form.content }}</p>
-                    	</div>
-                    	<button type="submit" class="btn btn-primary">Submit</button>
-                	</form>
-              	</div>
         </div>
-
+        <div class="postfoot"></div>
+    </div>
+</div>
+{% if comments %}
+<div class="m-detail m-detail-photo">
+    <div class="posthead"></div>
+    <div class="postbody">
+        <div class="postcomment">
+            {% for comt in comments %}
+            <p reblogfrom="reblogfrom">
+                {% if comt.is_owner %}
+                    <a href ='/'>{{ comt.author }}</a>
+                {% else %}
+                    <p>{{ comt.author }}</p>
+                {% endif %}
+                <p>{{ comt.create_time }}</p>
+            </p>
+            <blockquote>
+                <p>{{ comt.content }}</p>
+            </blockquote>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="postfoot"></div>
+</div>
+{% endif %}
+<!-- Comments Form -->
+<div class="m-detail m-detail-comment m-detail-hot">
+    <div class="posthead"></div>
+    <div class="postbody">                    
+        <div class="comment">
+            <div class="nctitle">Comment</div>
+            <form role="form" action="?" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <p class="f-iblock comment-line">{{ form.name.label_tag }} {{ form.name }}</p>
+                    <p class="f-iblock comment-line">{{ form.email.label_tag }} {{ form.email }}</p>
+                    <p class="f-iblock inputtext ">{{ form.content }}</p>
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="postfoot"></div>
+</div>
 {% endblock %}

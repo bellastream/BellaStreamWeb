@@ -31,6 +31,7 @@ class BlogComment(models.Model):
 	author = models.CharField(max_length=30, default="", verbose_name="名字")
 	email = models.EmailField()
 	content = models.TextField(default="", verbose_name="内容")
+	is_owner = models.BooleanField(default=False, verbose_name="是否文章作者")
 	create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
 	def __unicode__(self):

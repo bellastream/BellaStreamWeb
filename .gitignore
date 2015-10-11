@@ -3,6 +3,8 @@ db.sqlite3
 scripts/
 migrations/
 media/
+.idea
 .idea/
 *.log
 uwsgi.xml
+.DS_Store

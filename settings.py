@@ -21,9 +21,9 @@ SECRET_KEY = 'qv8h)=i44-p50=o(e9eh%zv1=5+70n8#-13n7+zsgmt)9*46bs'
 WECHAT_TOKEN = '9ebella'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

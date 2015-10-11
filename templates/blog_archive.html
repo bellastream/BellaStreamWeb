@@ -15,14 +15,14 @@
                     {% if post.image %}
                     <div class="img">
                         <a href="/media/{{ post.image }}">
-                            <img src="post.image">
+                            <img src="/media/{{ post.image }}">
                         </a>
                     </div>
                     {% endif %}
                 </div>
                 <div class="text">
                     {% autoescape off %}
-                    {{ post.content | truncatechars_html:350 | safe }}
+                    {{ post.content | truncatechars_html:220 | safe }}
                     {% endautoescape %}
                 </div>
             </div>
